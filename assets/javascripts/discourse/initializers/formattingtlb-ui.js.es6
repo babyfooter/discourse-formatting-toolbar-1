@@ -59,6 +59,24 @@ function priorToApi(container)
           perform: e => e.applySurround('[color=#]', '[/color]', 'couleur_ui_default_text')
         });
       });
+    
+      onToolbarCreate(toolbar => {
+          toolbar.addButton({
+            id: "size_ui_button",
+            group: "extras",
+            icon: "text-height",
+            perform: e => e.applySurround('[size=#]', '[/size]', 'size_ui_default_text')
+          });
+        });
+    
+      onToolbarCreate(toolbar => {
+        toolbar.addButton({
+          id: "fa_ui_button",
+          group: "extras",
+          icon: "fonticons",
+          perform: e => e.applySurround('[fa]', '[/fa]', 'fa_ui_default_text')
+        });
+      });
   }
 }
 
@@ -118,6 +136,23 @@ function initializePlugin(api)
           group: "extras",
           icon: "paint-brush",
           perform: e => e.applySurround('[color=#]', '[/color]', 'couleur_ui_default_text')
+        });
+      });
+    api.onToolbarCreate(toolbar => {
+          toolbar.addButton({
+            id: "size_ui_button",
+            group: "extras",
+            icon: "text-height",
+            perform: e => e.applySurround('[size=#]', '[/size]', 'size_ui_default_text')
+          });
+        });
+    
+      api.onToolbarCreate(toolbar => {
+        toolbar.addButton({
+          id: "fa_ui_button",
+          group: "extras",
+          icon: "fonticons",
+          perform: e => e.applySurround('[fa]', '[/fa]', 'fa_ui_default_text')
         });
       });
   }
