@@ -17,6 +17,13 @@ function replaceFontSize (text) {
   return text;
 }
 
+function replaceFa (text) {
+  while (text !== (text = text.replace(/\[fa=([^\]]+)\]((?:(?!\[fa=[^\]]+\]|\[\/color\])[\S\s])*)\[\/fa\]/ig, function (match, p1, p2) {
+    return `<i class='fa ${p1}'  aria-hidden='true'></i>`;
+  })));
+  return text;
+}
+
 export function setup(helper) {
 
   helper.whiteList([
@@ -24,6 +31,8 @@ export function setup(helper) {
     'div.floatr',
     'font[color=*]',
     'font[size=*]',
+    'label[for]',
+    'i[class=*]',
   ]);
 
   helper.whiteList({
@@ -42,6 +51,8 @@ export function setup(helper) {
 
   replaceBBCode("floatl", contents => ['div', {'class': 'floatl'}].concat(contents));
   replaceBBCode("floatr", contents => ['div', {'class': 'floatr'}].concat(contents));
+  replaceBBCode("modal", contents => ['label', {'for': '*'}].concat(contents));
+
 
   ["left", "center", "right", "justify"].forEach(direction => {
     replaceBBCode(direction, contents => ['div', {'style': "text-align:" + direction}].concat(contents));
@@ -49,4 +60,5 @@ export function setup(helper) {
 
   helper.addPreProcessor(replaceFontColor);
   helper.addPreProcessor(replaceFontSize);
+  helper.addPreProcessor(replaceFa);
 }
