@@ -13,3 +13,7 @@ fr:
       justify_ui_default_text: "Texte"
       couleur_ui_button_title: "Colorer un texte"
       couleur_ui_default_text: "Texte"
+      fa_ui_button_title: "Ajouter un icone fa"
+      fa_ui_default_text: "Nom de l'icone fa"
+      size_ui_button_title: "Change text size"
+      size_ui_default_text: "Size wanted"
