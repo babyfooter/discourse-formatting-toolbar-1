@@ -40,4 +40,20 @@
 
   Discourse.Markdown.whiteListTag('font', 'color');
   Discourse.Markdown.whiteListTag('font', 'size');
+  
+  //------------------------------- FA -----------------------------------------
+  
+  // NOTE: example of fa call expression 
+  // <i class="fa fa-adjust" aria-hidden="true"></i>
+  
+  function replaceFa (text) {
+    while (text != (text = text.replace(/\[fa=([^\]]+)\]((?:(?!\[fa=[^\]]+\]|\[\/fa\])[\S\s])*)\[\/fa\]/ig, function (match, p1, p2, offset, string) {
+      return "<i class='fa " + p1 + "' aria-hidden='true'></i>";
+    })));
+    return text;
+  }
+  
+  Discourse.Dialect.addPreProcessor(replaceFa);
+  Discourse.Markdown.whiteListTag('fa', 'class');
+
 })();
